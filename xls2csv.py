@@ -1,7 +1,20 @@
 import pandas as pd
+import sys
+import os
 
-# Function to read Excel file and write CSV files for each sheet
 def excel_to_csv(file_path):
+    """
+    Convert Excel file to CSV files, one per worksheet.
+    Replaces line breaks with spaces in cell contents.
+    
+    Args:
+        file_path (str): Path to the Excel file
+    """
+    # Check if file exists
+    if not os.path.exists(file_path):
+        print(f"Error: File '{file_path}' not found")
+        sys.exit(1)
+        
     # Read the Excel file
     excel_data = pd.ExcelFile(file_path)
     
@@ -17,9 +30,14 @@ def excel_to_csv(file_path):
         df.to_csv(csv_file_path, index=False, encoding='utf-8')
         print(f"Worksheet '{sheet_name}' has been exported to '{csv_file_path}'.")
 
-# Path to your Excel file
-file_path = 'in.xlsx'
+def main():
+    if len(sys.argv) != 2:
+        print("Usage: python xls2csv.py <excel_file>")
+        sys.exit(1)
+    
+    file_path = sys.argv[1]
+    excel_to_csv(file_path)
 
-# Call the function to convert Excel to CSV
-excel_to_csv(file_path)
+if __name__ == "__main__":
+    main()
 

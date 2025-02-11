@@ -1,6 +1,35 @@
-*.csv
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+env/
 bin/
-*.xlsx
 include/
 lib/
 pyvenv.cfg
+
+# Go
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+xls2csv
+
+# Project specific
+*.xlsx
+*.csv
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
